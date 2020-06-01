@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "TasksIndex";
+}
+<h4>Click <a href="/Tasks/AddTask" class="btn-outline-danger">HERE</a> to add a task.</h4>
+<h1>Your Tasks</h1>
+
+@model List<Tasks>
+
+    <table class="table">
+        <tr>
+            <th>User ID</th>
+            <th>Task Description</th>
+            <th>Due Date</th>
+            <th>Completed</th>
+
+        </tr>
+        @foreach (var task in Model)
+        {
+            <tr>
+                <td>@task.AspNetUsersId</td>
+                <td>@task.Description</td>
+                <td>@task.DueDate</td>
+                <td>@task.Completed</td>
+                <td>
+                    <a href="/Tasks/MarkComplete?id=@task.Id" class="btn-dark">Change Status</a>
+                </td>
+                <td>
+                    <a href="/Tasks/DeleteTask?id=@task.Id" class="btn-danger">Delete Task</a>
+                </td>
+
+            </tr>
+        }
+    </table>
+
